@@ -1,1 +1,1 @@
-web:gunicorn TestStuff.wsgi --logfile -
+web:gunicorn config.wsgi --logfile -
