@@ -10,7 +10,7 @@ django = "~=3.1.0"
 gunicorn = "==19.9.0"
 requests = "*"
 django-crispy-forms = "*"
-plotly= "4.10.0"
+
 
 
 [requires]
