@@ -1,7 +1,59 @@
 {% extends 'pages/base.html' %}
 
+
+
+
 {% block graph %}
 
-{{ plot_div }}
+    <script>
+        
+        var charData = {
+            "type":"line",
+            "series" : [
+            { "values": [20,40,25,50,15,45,33,34]},
+            ]
+        };
 
+        zingchart.render({
+            id : "charts",
+            data : charData
+        });
+
+
+    </script>
 {% endblock graph %}
+
+
+
+<!--
+<script>
+    var charData = {
+        "type":"bar",
+        "scale-x":{
+            "values":[
+                "Ashwin",
+                "Uhshwin",
+                "Ashweeen"
+            ]
+        },
+        "series" : 
+        [
+            {
+                "values" : [
+                        22,
+                        55,
+                        10
+                ]
+            }
+        ]
+
+    }
+
+    zingchart.render({
+        id : "charts",
+        data : charData
+    });
+
+
+</script>
+-->
