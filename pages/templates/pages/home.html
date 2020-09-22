@@ -2,10 +2,28 @@
 
 
 
-{% block about %}
-    <h2>Homepage</h2>
-    <p class="lead">welcome to my home</p>
-{% endblock about %}
 
+{% block graph %}
+    
+    
+    <script>
+      
+        
+        vals = JSON.parse("{{ values }}");
+        var charData = {
+            "type":"line",
+            "series" : [
+            { "values":  vals },
+            ]
+        };
+
+        zingchart.render({
+            id : "charts",
+            data : charData
+        });
+
+
+    </script>
+{% endblock graph %}
 
 

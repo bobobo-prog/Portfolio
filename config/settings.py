@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pages.apps.PagesConfig',
-    'crispy_forms'
+    'crispy_forms',
+    'hitcount'
     
 ]
 
