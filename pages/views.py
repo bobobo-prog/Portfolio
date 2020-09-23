@@ -15,11 +15,18 @@ def HomePage(request):
     c.host = user
     c.vis_month = mon
     c.save()
+    #--------hit recieved-------------
 
-    n = Count.objects.all().count()
-    num_users = [ i for i in range(0,n)]
-    num_users = json.dumps(num_users)
-    context = {'count':num_users}
+    months = list(Count.objects.order_by().values_list('vis_month',flat = True).distinct())
+
+    fin_counts = []
+
+    for i in months:
+        val = Count.objects.filter(vis_month = i).count()
+        fin_counts.append(val)
+
+    
+    context = {'count':fin_counts}
     return render(request, 'pages/home.html',context)
 
     
@@ -42,3 +49,10 @@ class About(TemplateView):
 #     counts = [ i for i in range(0,num_vis)]
 #     counts = json.dumps(counts)
 #     context = {'hits' : num_vis,'values':counts}    
+
+
+
+
+# n = Count.objects.all().count()
+# num_users = [ i for i in range(0,n)]
+# num_users = json.dumps(num_users)
