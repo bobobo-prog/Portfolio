@@ -10,10 +10,10 @@ from datetime import date, datetime
 
 def HomePage(request):
     user = request.get_host()
-    mon = datetime.now().month
+    day = datetime.now().day
     c = Count()
     c.host = user
-    c.vis_month = mon
+    c.vis_month = day
     c.save()
     #--------hit recieved-------------
 
