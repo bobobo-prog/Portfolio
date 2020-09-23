@@ -1,19 +1,22 @@
 {% extends 'pages/base.html' %}
 
+{% block blue %}
+    <h1><b> Welcome to my Webfolio :) </b> </h1>
+    <p class="lead"> The Graph below shows number of visits here </p>
+{% endblock blue %}
 
 
 
 {% block graph %}
-    
-    
-    <script>
-      
         
-        vals = JSON.parse("{{ values }}");
+    <script>
+          
+        vals = JSON.parse("{{ count }}");
         var charData = {
             "type":"line",
             "series" : [
             { "values":  vals },
+            {"values": [2,10,11,22,7,9,3]}
             ]
         };
 
