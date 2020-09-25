@@ -8,6 +8,11 @@ from .models import Count
 from datetime import date, datetime
 
 
+
+def smudge(request):
+    return render(request,'pages/smudge.html')
+
+
 def HomePage(request):
     user = request.get_host()
     day = datetime.now().day

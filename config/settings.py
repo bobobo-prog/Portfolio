@@ -123,9 +123,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-
-
-
-#⬢ agile-castle-83007
-#https://agile-castle-83007.herokuapp.com/ | https://git.heroku.com/agile-castle-83007.git
