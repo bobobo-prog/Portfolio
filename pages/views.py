@@ -30,7 +30,7 @@ def HomePage(request):
         val = Count.objects.filter(vis_month = i).count()
         fin_counts.append(val)
 
-    
+    fin_counts.reverse()
     
     context = {'count':fin_counts}
     return render(request, 'pages/home.html',context)
