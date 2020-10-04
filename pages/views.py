@@ -23,7 +23,7 @@ def HomePage(request):
     #--------hit recieved-------------
 
     months = list(Count.objects.order_by().values_list('vis_month',flat = True).distinct())
-
+    months.sort()
     fin_counts = []
 
     for i in months:
