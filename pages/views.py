@@ -6,6 +6,12 @@ import requests
 import json
 from .models import Count
 from datetime import date, datetime
+import calendar
+
+
+def clear_database(month):
+    temp = Count()
+    temp.objects.filter(vis_month=month).delete()
 
 
 
@@ -16,21 +22,34 @@ def smudge(request):
 def HomePage(request):
     user = request.get_host()
     day = datetime.now().day
+    month = datetime.now().month
+
+    lim = calendar.monthrange(2021,month)
+    
+    if(lim[1] == day):
+        if(len(Count.objects.all)!=1):
+            clear_database(month)
+
     c = Count()
     c.host = user
-    c.vis_month = day
+    c.vis_day = day
+    c.vis_month = month    
     c.save()
+
+    
+
+
     #--------hit recieved-------------
 
-    months = list(Count.objects.order_by().values_list('vis_month',flat = True).distinct())
+    months = list(Count.objects.order_by().values_list('vis_day',flat = True).distinct())
     months.sort()
     fin_counts = []
 
     for i in months:
-        val = Count.objects.filter(vis_month = i).count()
+        val = Count.objects.filter(vis_day = i).count()
         fin_counts.append(val)
 
-    #fin_counts.reverse()
+    #fin_counts.reverse()q
     
     context = {'count':fin_counts}
     return render(request, 'pages/home.html',context)
