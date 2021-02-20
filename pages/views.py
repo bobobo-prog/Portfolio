@@ -9,11 +9,6 @@ from datetime import date, datetime
 import calendar
 
 
-def clear_database(month):
-    temp = Count()
-    temp.objects.filter(vis_month=month).delete()
-
-
 
 def smudge(request):
     return render(request,'pages/smudge.html')
@@ -25,18 +20,19 @@ def HomePage(request):
     month = datetime.now().month
 
     lim = calendar.monthrange(2021,month)
-    
-    if(lim[1] == day):
-        if(len(Count.objects.all)!=1):
-            clear_database(month)
 
+    #to clear database every month
+    if(lim[1] == day):
+        l = len(Count.objects.all())
+        if(l!=1):
+            Count.objects.filter(vis_month=month).delete()
+
+    #saving every user 
     c = Count()
     c.host = user
     c.vis_day = day
     c.vis_month = month    
     c.save()
-
-    
 
 
     #--------hit recieved-------------
