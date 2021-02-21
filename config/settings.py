@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '*vj6%lm=g8vt62ciexdsj*t^mv$)_r5rbs4c6sf$@&f+1gcr8d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -77,22 +77,22 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'firstgre',
-#         'USER':'postgres',
-#         'PASSWORD':'ashwin21f2.',
-#         'HOST':'127.0.0.1',
-#         'PORT':'5432',
-#     }
-# }
-
-
-
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'firstgre',
+        'USER':'postgres',
+        'PASSWORD':'ashwin21f2.',
+        'HOST':'127.0.0.1',
+        'PORT':'5432',
+    }
 }
+
+
+
+# DATABASES = {
+#     'default': dj_database_url.config()
+# }
 
 
 # Password validation

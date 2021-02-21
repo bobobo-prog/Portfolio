@@ -15,17 +15,16 @@ def smudge(request):
 
 
 def HomePage(request):
+    dt = datetime.now()
     user = request.get_host()
     day = datetime.now().day
     month = datetime.now().month
 
-    lim = calendar.monthrange(2021,month)
-
     #to clear database every month
-    if(lim[1] == day):
-        l = len(Count.objects.all())
-        if(l!=1):
-            Count.objects.filter(vis_month=month).delete()
+    lim = calendar.monthrange(2021,month)
+    lim2 = dt.strftime('%H:%M')
+    if(lim[1] == day and lim2 == '23:59'):
+        Count.objects.filter(vis_month=month).delete()
 
     #saving every user 
     c = Count()
@@ -35,8 +34,7 @@ def HomePage(request):
     c.save()
 
 
-    #--------hit recieved-------------
-
+    #hit recieved
     months = list(Count.objects.order_by().values_list('vis_day',flat = True).distinct())
     months.sort()
     fin_counts = []
