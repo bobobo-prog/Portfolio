@@ -20,26 +20,21 @@ def HomePage(request):
     day = datetime.now().day
     month = datetime.now().month
 
-    #to clear database every month
-    lim = calendar.monthrange(2021,month)
-    lim2 = dt.strftime('%H:%M')
-    if(lim[1] == day and lim2 == '23:59'):
-        Count.objects.filter(vis_month=month).delete()
-
     #saving every user 
     c = Count()
     c.host = user
     c.vis_day = day
-    c.vis_month = month    
+    c.vis_month = month
     c.save()
 
 
     #hit recieved
-    months = list(Count.objects.order_by().values_list('vis_day',flat = True).distinct())
-    months.sort()
+    #months = list(Count.objects.order_by().values_list('vis_day',flat = True).distinct())
+    days = list(Count.objects.values_list('vis_day',flat = True).filter(vis_month = month).distinct())
+    days.sort()
     fin_counts = []
 
-    for i in months:
+    for i in days:
         val = Count.objects.filter(vis_day = i).count()
         fin_counts.append(val)
 
