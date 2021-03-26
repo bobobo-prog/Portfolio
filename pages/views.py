@@ -7,6 +7,14 @@ import json
 from .models import Count
 from datetime import date, datetime
 import calendar
+from requests import get
+
+
+url = "https://ashwin-mp.herokuapp.com/about/"
+time = datetime.now().time()
+if(time.minute>28 and time.minute<30):
+    get(url)
+    
 
 
 
@@ -50,23 +58,3 @@ def HomePage(request):
 class About(TemplateView):
     template_name = 'pages/about.html'
 
-
-
-
-
-
-
-    
-
-#     num_vis = request.session.get('num_visits',0)
-#     request.session['num_visits'] = num_vis + 1
-#     counts = [ i for i in range(0,num_vis)]
-#     counts = json.dumps(counts)
-#     context = {'hits' : num_vis,'values':counts}    
-
-
-
-
-# n = Count.objects.all().count()
-# num_users = [ i for i in range(0,n)]
-# num_users = json.dumps(num_users)
