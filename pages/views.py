@@ -14,6 +14,9 @@ url = "https://ashwin-mp.herokuapp.com/about/"
 time = datetime.now().time()
 if(time.minute>28 and time.minute<30):
     get(url)
+    oneob = Count.objects.filter(vis_day = datetime.now().day)[1]
+    oneob.delete()
+
     
 
 
