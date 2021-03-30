@@ -12,7 +12,7 @@ from requests import get
 
 url = "https://ashwin-mp.herokuapp.com/about/"
 time = datetime.now().time()
-if(time.minute>28 and time.minute<30):
+if(time.minute>58 and time.minute<60):
     get(url)
     oneob = Count.objects.filter(vis_day = datetime.now().day)[1]
     oneob.delete()
