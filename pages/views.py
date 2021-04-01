@@ -10,18 +10,17 @@ import calendar
 from requests import get
 
 
-url = "https://ashwin-mp.herokuapp.com/about/"
+
+url = "https://ashwin-mp.herokuapp.com/smudgelord/"
 time = datetime.now().time()
 if(time.minute>58 and time.minute<60):
     get(url)
-    oneob = Count.objects.filter(vis_day = datetime.now().day)[1]
-    oneob.delete()
-
     
 
 
-
 def smudge(request):
+    oneob = Count.objects.filter(vis_day = datetime.now().day)[1]
+    oneob.delete()
     return render(request,'pages/smudge.html')
 
 
@@ -40,7 +39,7 @@ def HomePage(request):
 
 
     #hit recieved
-    #months = list(Count.objects.order_by().values_list('vis_day',flat = True).distinct())
+    
     days = list(Count.objects.values_list('vis_day',flat = True).filter(vis_month = month).distinct())
     days.sort()
     fin_counts = []
