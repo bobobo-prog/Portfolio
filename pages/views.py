@@ -11,16 +11,8 @@ from requests import get
 
 
 
-url = "https://ashwin-mp.herokuapp.com/smudgelord/"
-time = datetime.now().time()
-if(time.hour == 6):
-    get(url)
-    
-
     
 def smudge(request):
-    oneob = Count.objects.filter(vis_day = datetime.now().day)[1]
-    oneob.delete()
     return render(request,'pages/smudge.html')
 
 
