@@ -18,12 +18,13 @@ def smudge(request):
 
 def HomePage(request):
     dt = datetime.now()
-    user = request.get_host()
+    user = request.META.get("REMOTE_ADDR")
     day = datetime.now().day
     month = datetime.now().month
 
     #saving every user 
     c = Count()
+    #if(len(Count.objects.all().filter(host = user)<1)):
     c.host = user
     c.vis_day = day
     c.vis_month = month
@@ -38,6 +39,7 @@ def HomePage(request):
 
     for i in days:
         val = Count.objects.filter(vis_day = i).count()
+        val = val//24
         fin_counts.append(val)
 
     #fin_counts.reverse()q
