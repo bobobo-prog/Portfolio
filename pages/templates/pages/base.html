@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,15 +7,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=0.5, shrink-to-fit=yes">
   <title>Unchained</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   
   <link href="{{ STATIC_URL }}scrolling-nav.css" rel="stylesheet">
 </head>
-
+{% block style %}
 <style>
     header
     {
@@ -28,37 +31,44 @@
     {
         padding: 2% 0;
     }
+    body{
+      background-image: url("{% static 'pages/background7.jpg' %}");
+      background-size: contain;
+    }
+
     .navbar
     {
         margin-bottom: 0;
-        min-height: 80px;
+        min-height: 90px;
         float: left;
+        position: relative;
        
     }
     .glyphs
     {
-      float: right;
+      display:inline-block;
+       left: auto;
+       right: 1.9%;
+      padding-left: 50%;
     }
     .button{
     
-    border: 0 none;
-    font-weight: 700;
-    letter-spacing: 2%;
-    text-transform: uppercase;
-    font-family:  Arial, Helvetica, sans-serif ;
-    font-stretch: ultra-condensed ;
+      border: 0 none;
+      font-weight: 700;
+      letter-spacing: 2%;
+      text-transform: uppercase;
+      font-family:  Arial, Helvetica, sans-serif ;
+      font-stretch: ultra-condensed ;
+      padding-top: 0.5%;
+      
+
     }
 
     .Bio{
       margin-left:2%;
       font-family: monospace;
     }
-    .navbar-brand
-    {
-      transform: translateX(-70%);
-      left: 50%;
-      position:absolute;
-    }
+   
     
     .main
     {
@@ -68,8 +78,33 @@
       min-height: 32em;
       margin: auto;
     }
+    .navbar-brand {
+    transform: translateX(-50%);
+    left: 50%;  
+    position: absolute;
+  }
+  
+  .bg-custom-1{
+    background-color: #000a13;
+  }
+
+  .bg-custom-2{
+    background-color: #6c6a6e;
+  }
+
+  div{
+    border-radius: 15px;
+  }
+
+  #card-header-color {
+   background-color: rgb(121, 121, 121) !important;
+   
+}
+
+
 
 </style>
+{% endblock style %}
 
 
 <body id="page-top">
@@ -77,21 +112,31 @@
 
   <!-- Navigation -->
   
-  <nav class="navbar navbar-expand-lg navbar-inverse static-top">
-    <a class="navbar-brand" href="https://open.spotify.com/playlist/2AMiKKCpXmWTSyKnhxvPK1?si=QpuT2cKdSzeqLRKHP7tdPA"><span class="glyphicon glyphicon-leaf" aria-hidden="true" ></span></a>
-    
-      <div class="container" >
+  <nav class="navbar navbar-dark static-top " style='background-color: #000000'>
+      
+      <a class="navbar-brand" href="https://open.spotify.com/playlist/2AMiKKCpXmWTSyKnhxvPK1?si=QpuT2cKdSzeqLRKHP7tdPA">
+        <span class="fa fa-leaf" aria-hidden="true" ></span>
+      </a>  
+
+        
+      <div class="navbar-expand mr-auto"  >
          <a href="{% url 'home' %}">
            <button  class="button btn-large">
-            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+            <i class="fa fa-home" aria-hidden="true"></i>
           </button>
         </a>
          <a href="{% url 'about' %}">
            <button  class="button btn-large">
-            About ME
+            About Me
           </button>
         </a>
-         <div class="glyphs">
+        <a href="{% url 'blogs' %}">
+          <button  class="button btn-large">
+           Blogs
+         </button>
+        </a>
+      </div>  
+          <div class="glyphs ">
             <a href="https://www.linkedin.com/in/ashwin-poojary-127932a1/">
               <i style="font-size:30px" class="fa">&#xf0e1;&nbsp;&nbsp;</i>
             </a>
@@ -100,7 +145,6 @@
               <i style="font-size:30px" class="fa">&#xf09b;</i> 
             </a>
          </div>
-          </div>  
   </nav>
 
   
@@ -111,7 +155,7 @@
       {% endblock blue %}
     </div>
   </header>
-  
+  <br>
     <div id = "charts" class="col-lg-8 mx-auto">
       {% block graph %}
 
@@ -133,13 +177,7 @@
   
 
   
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-     <i class='fas fa-cat' style='font-size:20px;color:green'></i>
-    </div>
-    <!-- /.container -->
-  </footer>
+  
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

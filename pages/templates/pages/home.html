@@ -13,17 +13,21 @@
     <script>
           
         vals = JSON.parse("{{ count }}");
+        
         var charData = {
             "type":"line",
+
             "series" : [
             { "values":  vals },
             {"values": [5,5,5,5,5,5,5,5,5,5]}
             ]
+            
         };
 
         zingchart.render({
             id : "charts",
-            data : charData
+            data : charData,
+            
         });
 
 

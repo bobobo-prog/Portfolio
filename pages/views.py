@@ -15,6 +15,10 @@ from requests import get
 def smudge(request):
     return render(request,'pages/smudge.html')
 
+    
+def blogs(request):
+    return render(request,'pages/blogs.html')
+
 
 def HomePage(request):
     dt = datetime.now()
@@ -36,10 +40,12 @@ def HomePage(request):
     days = list(Count.objects.values_list('vis_day',flat = True).filter(vis_month = month).distinct())
     days.sort()
     fin_counts = []
+    
+    
+
 
     for i in days:
         val = Count.objects.filter(vis_day = i).count()
-        
         fin_counts.append(val)
 
     #fin_counts.reverse()q
