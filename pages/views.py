@@ -46,7 +46,7 @@ def HomePage(request):
 
     for i in days:
         val = Count.objects.filter(vis_day = i).count()
-        fin_counts.append(val//6)
+        fin_counts.append(val)
 
     #fin_counts.reverse()q
     
